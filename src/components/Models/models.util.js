@@ -67,12 +67,12 @@ export const generateModelsDetailsMenu = selectedModel => [
   {
     label: 'features',
     id: 'features',
-    hidden: !selectedModel.item?.feature_vector
+    hidden: !selectedModel.item?.features && !selectedModel.item?.feature_vector
   },
   {
     label: 'statistics',
     id: 'statistics',
-    hidden: !selectedModel.item?.feature_vector
+    hidden: !selectedModel.item?.stats && !selectedModel.item?.feature_vector
   }
 ]
 
@@ -296,6 +296,7 @@ export const generatePageData = (
     data.handleRequestOnExpand = handleRequestOnExpand
     data.handleRemoveRequestData = handleRemoveRequestData
   } else if (pageTab === MODEL_ENDPOINTS_TAB) {
+    data.hidePageActionMenu = true
     data.details.menu = modelEndpointsDetailsMenu
     data.details.type = MODEL_ENDPOINTS_TAB
     data.filters = modelEndpointsFilters
